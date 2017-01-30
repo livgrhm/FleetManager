@@ -3,6 +3,18 @@
 A simple webservice to calculate the most efficient allocation of engineers
 to a fleet of rent-able scooters in Berlin.
 
+The application has been deployed using Heroku at: https://obscure-depths-17216.herokuapp.com.
+
+Example URL:
+```
+https://obscure-depths-17216.herokuapp.com/fleet?scooters=[15,10]&fmCapacity=12&feCapacity=5
+```
+
+Example Response:
+```
+{"fleetEngineers":3}
+```
+
 ## Contents
 
 ## Dependencies
