@@ -16,14 +16,28 @@ Example Response:
 ```
 
 ## Contents
+* [Dependencies](#dependencies)
+* [Local Installation](#local-installation)
+  + [Application](#application)
+  + [Health Check](#health-check)
+* [Testing the Service](#testing-the-service)
+  + [Get Minimum Fleet Engineers](#get-minimum-fleet-engineers)
+  + [Random Test](#random-test)
+* [Calculations](#calculations)
+* [License](#license)
 
+<a name="dependencies"></a>
 ## Dependencies
 This project was built using **Dropwizard 1.0.5** and **Java 1.0.8** on
-**Mac OS 10.12.2**. **Apache Maven (3.3.9)** is required to build and package
+**Mac OS 10.12.2**.
+
+**Apache Maven (3.3.9)** is required to build and package
 the application.
 
-## Installation
+<a name="local-installation"></a>
+## Local Installation
 
+<a name="application"></a>
 ### Application
 1. Run `mvn clean install` to build the application
 2. Start application with `java -jar target/fleetmanager-0.0.1.jar server FleetManager.yml`
@@ -31,11 +45,14 @@ the application.
   * Will return a 404 HTTP Response
 4. Full API documentation can be found in target/apidocs
 
+<a name="health-check"></a>
 ### Health Check
 To see the application's health enter url `http://localhost:8081/healthcheck`
 
+<a name="testing-the-service"></a>
 ## Testing the Service
 
+<a name="get-minimum-fleet-engineers"></a>
 ### Get Minimum Fleet Engineers
 * URL: **/fleet**
 * Method: `GET`
@@ -51,7 +68,7 @@ To see the application's health enter url `http://localhost:8081/healthcheck`
 * Success Response: `{ "fleetEngineers": 3 }`
 * Error Response: HTTP 400
 * Sample call:
-```
+```javascript
 $.ajax({
     url: "/fleet&scooters=[15,10]&fmCapacity=12&feCapacity=5",
     dataType: "json",
@@ -62,6 +79,7 @@ $.ajax({
 });
 ```
 
+<a name="random-test"></a>
 ### Random Test
 * URL: **/fleet/test**
 * Description: Generates a test case to check the calculations of the webservice.
@@ -70,7 +88,7 @@ $.ajax({
 * Success Response: `{ "fleetEngineers": 3 }`
 * Error Response: HTTP 400
 * Sample call:
-```
+```javascript
 $.ajax({
     url: "/fleet/test",
     dataType: "json",
@@ -81,6 +99,21 @@ $.ajax({
 });
 ```
 
+<a name="calculations"></a>
 ## Calculations
+The method is as follows:
+* Select the best district for the FM to go to
+  * For each district D, calculate the FE's required to cover that district, if the FM chooses it
+  * Calculate the wastage in each case
+    * (how many extra units could one of the FE's attended?)
+    * (how many extra units could the FM have attended?)
+  * Order the districts by wastage, and take those districts with the least wastage
+* Calculate the minimum FE's required for each of the min wastage districts
+  * Loop over the other districts &amp; calculate num FE's needed to cover
+  * Add totals together, plus any FE's that are required to help the FM on their district
+* Choose the FM district that results the minimum total FE's required
+* Return num FE's required.
 
+<a name="license"></a>
 ## License
+[MIT](http://link.com)
