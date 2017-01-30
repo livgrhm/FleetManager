@@ -16,7 +16,7 @@ the application.
 1. Run `mvn clean install` to build the application
 2. Start application with `java -jar target/fleetmanager-0.0.1.jar server FleetManager.yml`
 3. To check that the application is running enter url `http://localhost:8080`
-** Will return a 404 HTTP Response
+  * Will return a 404 HTTP Response
 4. Full API documentation can be found in target/apidocs
 
 ### Health Check
@@ -28,14 +28,14 @@ To see the application's health enter url `http://localhost:8081/healthcheck`
 * URL: **/fleet**
 * Method: `GET`
 * Param (Required): scooters=string
-** Array representing Berlin districts &amp; number of scooters within each
-** Example: scooters=[15,10]
+  * Array representing Berlin districts &amp; number of scooters within each
+  * Example: scooters=[15,10]
 * Param (Required): fmCapacity=integer
-** Integer representing the number of scooters the Fleet Manager can service
-** Example: fmCapacity=12
+  * Integer representing the number of scooters the Fleet Manager can service
+  * Example: fmCapacity=12
 * Param (Required): feCapacity=integer
-** Integer representing the number of scooters a Fleet Engineer can service
-** Example: feCapacity=5
+  * Integer representing the number of scooters a Fleet Engineer can service
+  * Example: feCapacity=5
 * Success Response: `{ "fleetEngineers": 3 }`
 * Error Response: HTTP 400
 * Sample call:
