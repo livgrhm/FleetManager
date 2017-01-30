@@ -1,7 +1,0 @@
-fleetmanager/api/FleetEngineersResponse.class
-fleetmanager/core/FleetConfig.class
-fleetmanager/FleetManagerConfiguration.class
-fleetmanager/health/ServiceHealthCheck.class
-fleetmanager/core/District.class
-fleetmanager/resources/FleetResource.class
-fleetmanager/FleetManagerApplication.class
